@@ -15,11 +15,11 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/views'));
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render('static/html/index.ejs');
 });
 
 app.get('/physio-shoulder1',(req,res) => {
-    res.render('test.ejs');
+    res.render('static/html/exercise1.ejs');
 });
 
 
