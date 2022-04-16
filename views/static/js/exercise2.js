@@ -11,6 +11,8 @@ let oldPose = "";
 let rep = 0;
 let repti = 0;
 let repLimit =0;
+let oldTime="";
+let msg=""
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -27,7 +29,7 @@ function sleep(milliseconds) {
 function setup() {
 
   sleep(5000);
-
+  console.log("hiyyingh");
   var myCanvas = createCanvas(640, 480);
   myCanvas.parent('booth');
   video = createCapture(VIDEO);
@@ -46,9 +48,9 @@ function setup() {
   }
   brain = ml5.neuralNetwork(options);
   const modelInfo = {
-    model: 'model/Exercise1/model (1).json',
-    metadata: 'model/Exercise1/model_meta (1).json',
-    weights: 'model/Exercise1/model.weights (1).bin',
+    model: 'model/Exercise2/model.json',
+    metadata: 'model/Exercise2/model_meta.json',
+    weights: 'model/Exercise2/model.weights.bin',
   };
   brain.load(modelInfo, brainLoaded);
 
@@ -57,7 +59,7 @@ function setup() {
 }
 
 function brainLoaded() {
-  console.log('pose classification ready!');
+  console.log('pose classification ready!!');
   classifyPose();
 }
 
@@ -81,73 +83,77 @@ function gotResult(error, results) {
   // var elem1 = document.getElementById('name2');
   // elem1.innerHTML=round(results[0].confidence * 100)+"%";
   console.log(results);
+  console.log(results[0].label);
+  
   if (results[0].confidence > 0.75) {
     poseLabel = results[0].label.toUpperCase();
-    
-    if (poseLabel === "U"){
-      poseLabel = "Up"
-    }else{
-      poseLabel = "Down"
-    }
-    //console.log(poseLabel);
-    var elem = document.getElementById('name1');
-    elem.innerHTML=rep;
+    console.log("woww",results[0].label);
+    if (poseLabel === "B"){
+      poseLabel = "Bend More"
 
-    // var elem1 = document.getElementById('name2');
-    // elem1.innerHTML=round(results[0].confidence * 100);
-    
+    }
+    else if(poseLabel=='C'){
+      poseLabel="Bend Less"
+    }
+    else{
+      poseLabel="Bend Correct"
+    }
     nowPose = poseLabel
+
     let d = 0;
     let accu = 100;
-    if(nowPose==="Up"){
-      d = dist(pose.leftShoulder.x, pose.leftShoulder.y, pose.leftWrist.x, pose.leftWrist.y);
-      if(d>70){
-        accu = 100;
-      }else{
-        accu = round((d*100)/100);
+    if(nowPose=="Bend More"){
+      if(oldPose=="Bend More"){
+     
+        if(oldTime&&Date.now()-oldTime>1500){
+          msg="Please Bend More"
+        }
       }
-    }else{
-      d = dist(pose.leftShoulder.x, pose.leftShoulder.y, pose.leftWrist.x, pose.leftWrist.y);
-      if(d>170){
-        accu = 100;
-      }else{
-        accu = round((d*100)/170);
+      else{
+        oldTime=Date.now()
       }
-    }
-
-    var elem1 = document.getElementById('name2');
-    elem1.innerHTML=round(accu)+"%";
-
-    if(nowPose === oldPose){
       
-    }else{
-      repLimit++;
-      if (repLimit>15){
-        repti++;
-        repLimit=0;
-        
-        if(nowPose==="Down"){
-          let edit_save = document.getElementById("edit-save");
-          edit_save.src = "static/assets/11.jpg";
-        }else{
-          let edit_save = document.getElementById("edit-save");
-          edit_save.src = "static/assets/22.jpg";
-        }
-        oldPose = nowPose;
-        if(repti>1 && repti%2===1){
-          rep++
+    }
+    else if(nowPose=="Bend Less"){
+      if(oldPose=="Bend Less"){
+        if(oldTime&&Date.now()-oldTime>1500){
+          msg="Please Bend Less"
         }
       }
+      else{
+        oldTime=Date.now()
+      }
     }
+    else if(nowPose=="Bend Correct"){
+      let currTime=Date.now()
+      if(oldPose=="Bend Correct"){
+        if(oldTime&&currTime-oldTime>1500){
+          msg="Excellent...Stay on this Position"
+          var elem = document.getElementById('name1');
+          rep+=Math.floor((currTime-oldTime)/1000);
+          elem.innerHTML=rep;
 
-    
+        }
+      }
+      else{
+        oldTime=Date.now()
+      }
+      
+    }
+    oldPose=nowPose
   }
+  else{
+    msg="Please Stand As in the Picture"
+  }
+  let msgDiv=document.getElementById("msg")
+  msgDiv.innerHTML=msg
   //console.log(results[0].confidence);
   classifyPose();
 }
 
 
 function gotPoses(poses) {
+  // console.log("hmm",poses);
   if (poses.length > 0) {
     pose = poses[0].pose;
     skeleton = poses[0].skeleton;
@@ -156,7 +162,7 @@ function gotPoses(poses) {
 
 
 function modelLoaded() {
-  console.log('poseNet ready');
+  console.log('poseNet ready!!');
 }
 
 function draw() {
@@ -191,9 +197,9 @@ function draw() {
   }
   pop();
 
-  fill(255, 0, 255);
-  noStroke();
-  textSize(100);
-  textAlign(CENTER, CENTER);
-  text(poseLabel, width / 2, height / 2);
+  // fill(255, 0, 255);
+  // noStroke();
+  // textSize(100);
+  // textAlign(CENTER, CENTER);
+  // text(msg, width / 3, height / 3);
 }

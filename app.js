@@ -22,6 +22,10 @@ app.get('/physio-shoulder1',(req,res) => {
     res.render('static/html/exercise1.ejs');
 });
 
+app.get('/physio-squat',(req,res) => {
+    res.render('static/html/exercise2.ejs');
+});
+
 
 
 app.listen(3000, () => {

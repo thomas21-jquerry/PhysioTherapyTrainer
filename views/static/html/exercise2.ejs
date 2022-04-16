@@ -1,0 +1,106 @@
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/addons/p5.sound.min.js"></script>
+  <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css"> -->
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="static/css/physio.css">
+      <!-- <script src="https://unpkg.com/ml5@0.4.2/dist/ml5.min.js"></script> -->
+      <!-- p5 -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+      <!-- ml5 -->
+      <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <title>Phys.io</title>
+  </head>
+  <body style="background-color: black;">
+
+    <header>
+        <div class="banner">
+            <button class="logo" type="button" onclick="physioRedirect()">Phys.io</button>
+            <div id="contactus">
+                <button class="contact" type="button" onclick="contactRedirect()">Contact Us</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- <div class="container"> -->
+            <div class="row">
+              <div class="col">
+                <div class="card-body">
+                    <div id="booth">
+                        <br>
+                        <div id="msg"></div>
+                        <!-- <video id="video" height=100% width= 100% autoplay></video> -->
+                    </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-body">
+                            <center>
+                                <img id="edit-save" src="static/assets/squat.png" width="300" height="450">
+                            </center>
+
+                        </div>
+                        <!-- <div class="card" style="margin-left: 20px; margin-right: 20px;">
+                            <button style="background-color: rgb(21, 57, 126); ">
+                                <h1>NEXT MOVE</h1>
+                            </button>
+                        </div> -->
+                        
+                    </div>
+                  </div>
+              </div>
+
+              <div class="col">
+                  
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="background-color: rgb(240, 48, 48); margin: 33px; height: 170px;">
+                            <center>
+                                <h3><b>Timer</b></h3><br>
+                                <h1 id="name1" style="font-size: 5em;">0</h1>
+                            </center>
+                        </div>
+                        
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <div class="col">
+                        <div class="card" style="background-color: rgb(240, 48, 48); margin: 30px; height: 170px;">
+                            <center>
+                                <h3 ><b>Accuracy</b></h3><br>
+                                <h1 id="name2" style="font-size: 5em;">0%</h1>
+                            </center>
+                        </div>
+                    </div>
+                  </div> -->
+                  <br>
+                        <center>
+                            <a class="btn btn-danger" href="/" role="button" style="height: 60px; width: 200px;"><h1 style="color: black;">STOP<br></h1></a>
+                        </center>
+                        
+                </div>
+                  
+                  </a>
+                  
+              </div>
+            </div>
+          <!-- </div> -->
+
+    </main>
+
+      <script src="static/js/exercise2.js" charset="UTF-8"></script>
+
+  </body>
+  </html>
