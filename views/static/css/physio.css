@@ -11,6 +11,52 @@ body{
     width: 100%;
 }
 
+#headerCont{
+    padding: 2em;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+#hdone{
+    color: white;
+    font-weight: bold;
+}
+#section2{
+    height:100vh;
+}
+.butt{
+    height: 50%;
+    width: 140px;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0px 15px;
+    border: 1px solid seashell;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: #ff004e;
+    color: white;
+}
+
+#containerBd{
+    text-align: center;
+    background-color: #ffb6cd;
+    height: 100vh;
+    text-decoration: none;
+    
+}
+#butt3{
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+}
+#containerIn{
+    font-size: 20px;
+    height: 50vh;
+}
+
 .banner{
     overflow: hidden;
     background-color: rgb(43, 43, 70);
