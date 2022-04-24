@@ -28,9 +28,9 @@ body{
     height:100vh;
 }
 .butt{
-    height: 50%;
-    width: 140px;
-    font-size: 20px;
+    height: 75%;
+    width: 20%;
+    font-size: 35px;
     font-family: 'Times New Roman', Times, serif;
     margin: 0px 15px;
     border: 1px solid seashell;
@@ -39,6 +39,12 @@ body{
     cursor: pointer;
     background-color: #ff004e;
     color: white;
+    font-weight: bold;
+
+}
+
+.butt:hover{
+    background: #CE6D8B;
 }
 
 #containerBd{
@@ -49,10 +55,19 @@ body{
     
 }
 #butt3{
+    margin-top: 10rem;
     border-radius: 50px;
     height: 100px;
     width: 100px;
-    background-color: #44355B;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 10px;
+    background-color: #C42348;
+}
+#butt3:hover {
+    cursor: pointer;
+    background: #CE6D8B;
 }
 #containerIn{
     font-size: 20px;
