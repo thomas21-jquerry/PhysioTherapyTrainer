@@ -42,7 +42,7 @@ function setup() {
 
   let options = {
     inputs: 34,
-    outputs: 4,
+    outputs: 3,
     task: 'classification',
     debug: true
   }
@@ -85,7 +85,7 @@ function gotResult(error, results) {
   console.log(results);
   console.log(results[0].label);
   
-  if (results[0].confidence > 0.75) {
+  if (results[0].confidence > 0.60) {
     poseLabel = results[0].label.toUpperCase();
     console.log("woww",results[0].label);
     if (poseLabel === "B"){
